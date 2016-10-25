@@ -65,7 +65,7 @@ class App extends Component {
  
 
   _showLastMove() {
-    this.setState({moveNumber: this.state.lastResult.split(" ").length}); // to-do: wrong !!
+    this.setState({moveNumber: this.state.lastResult.split(" ").length});
   }
 
   _showNextMove() {
@@ -77,7 +77,7 @@ class App extends Component {
   }
 
   _showFirstMove() {
-    this.setState({moveNumber: 0});
+    this.setState({moveNumber: 1});
   }
 
  calcKnightsTour() {
@@ -113,10 +113,9 @@ class App extends Component {
 }
 
   render() {
- //   console.log(this.state.lastResult);
-//    console.log(this.state.moveNumber);
+
     let moveList = this.state.lastResult.split(" ").slice(0,this.state.moveNumber).map((s,i) => i === this.state.moveNumber-1 ? 'n@' + s : '-@' + s);
- //   console.log(moveList);
+
     return (
       <div className="App">
         <div className="App-header">
