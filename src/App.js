@@ -13,8 +13,6 @@ import { Row } from 'react-bootstrap';
 // import { form } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 
-
-
 //import Chessdiagram from '../../react-chessdiagram/build/dist.chessdiagram.js';
 import Chessdiagram from 'react-chessdiagram';
 import { knightsTour } from './knightsTour.js';
