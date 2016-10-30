@@ -10,7 +10,6 @@ import { ControlLabel } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
 import { HelpBlock } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
-// import { form } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 
 //import Chessdiagram from '../../react-chessdiagram/build/dist.chessdiagram.js';
