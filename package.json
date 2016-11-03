@@ -8,7 +8,8 @@
   "dependencies": {
     "react": "^15.3.2",
     "react-chessdiagram": "^1.0.9",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-highlighter": "^0.3.3"
   },
   "scripts": {
     "start": "react-scripts start",

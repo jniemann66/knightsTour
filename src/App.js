@@ -17,6 +17,8 @@ import Chessdiagram from 'react-chessdiagram';
 import { knightsTour } from './knightsTour.js';
 import { squareToFileRank } from './utility.js';
 
+var Highlight = require('react-highlighter');
+
 import './App.css';
 
 class App extends Component {
@@ -200,7 +202,10 @@ class App extends Component {
 
               <Row>
                 <Col xs={12}> 
-                  <p>{this.state.lastResult.join(' ')}</p>
+                  
+                  <p>
+                    <Highlight search={tourSquares[seqNumber-1]}>{this.state.lastResult.join(' ')}</Highlight>
+                  </p>
                   <p>{this.state.lastMessage}</p>
                 </Col>
               </Row>
