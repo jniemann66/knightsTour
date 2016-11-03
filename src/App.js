@@ -111,7 +111,11 @@ class App extends Component {
 
   render() {
 
-    let moveList = this.state.lastResult.split(" ").slice(0,this.state.moveNumber).map((s,i) => i === this.state.moveNumber-1 ? 'n@' + s : '-@' + s);
+    let tourSquares = this.state.lastResult.split(" ").slice(0,this.state.moveNumber); // sequence of squares visited in tour (as array)
+    let positionDescriptor = tourSquares.map(sq => '-@' + sq); // blanked squares at each square of sequence
+    positionDescriptor.push('N@' + tourSquares[this.state.moveNumber-1]); // knight on last square of sequence
+
+    console.log(positionDescriptor);
 
     return (
       <div className="App">
@@ -126,7 +130,7 @@ class App extends Component {
                 squareSize={this.refs.diagramContainer ? Math.min(80, 0.8 * this.refs.diagramContainer.clientWidth / this.state.boardWidth) : 45} 
                 files={this.state.boardWidth} 
                 ranks={this.state.boardHeight} 
-                pieces={moveList}
+                pieces={positionDescriptor}
               />
               <ButtonGroup bsSize="xsmall">
                 <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showFirstMove.bind(this)}><Glyphicon glyph="fast-backward" /></Button>
