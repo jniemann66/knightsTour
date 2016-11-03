@@ -51,8 +51,8 @@ class App extends Component {
     if(
       this.state.boardWidth > 26 || 
       this.state.boardHeight > 26 ||
-      this.state.boardWidth < 2 ||
-      this.state.boardHeight < 2 ||
+      this.state.boardWidth < 1 ||
+      this.state.boardHeight < 1 ||
       file > this.state.boardWidth - 1 ||
       rank > this.state.boardHeight - 1
     ) {
@@ -156,7 +156,12 @@ class App extends Component {
                     type="number"
                     value={this.state.boardWidth}
                     placeholder="Enter text"
-                    onChange={evt => this.setState({boardWidth: Math.min(Math.max(2,evt.target.value),26)})}
+                    onChange={evt => this.setState({
+                      boardWidth: Math.min(Math.max(1,evt.target.value),26), 
+                      lastResult: [],
+                      lastMessage: '',
+                      seqNumber: 1
+                    })}
                   />
                   </Col>
             
@@ -168,7 +173,12 @@ class App extends Component {
                     type="number"
                     value={this.state.boardHeight}
                     placeholder="Enter text"
-                    onChange={evt => this.setState({boardHeight: Math.min(Math.max(2,evt.target.value),26)})}
+                    onChange={evt => this.setState({
+                      boardHeight: Math.min(Math.max(1,evt.target.value),26),
+                      lastResult: [],
+                      lastMessage: '',
+                      seqNumber: 1
+                    })}
                   />
                   </Col>
                 </FormGroup>
@@ -204,7 +214,7 @@ class App extends Component {
                 <Col xs={12}> 
                   
                   <p>
-                    <Highlight search={tourSquares[seqNumber-1]}>{this.state.lastResult.join(' ')}</Highlight>
+                    <Highlight search={tourSquares[seqNumber-1] || ''}>{this.state.lastResult.join(' ')}</Highlight>
                   </p>
                   <p>{this.state.lastMessage}</p>
                 </Col>
