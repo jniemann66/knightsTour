@@ -17,12 +17,12 @@ function knightsTour(M, N, startFile, startRank, shuffleMoveOrder = false) {
 		}
 	}
 
-	let knightsPath = '';
+	let knightsPath = [];
 	let [currentFile, currentRank] = [startFile, startRank];
 	
 	do {
 	    /* eslint no-loop-func: off */ // (stfu, eslint !!)
-		knightsPath += fileRankToSquare(currentFile,currentRank) + ' ';
+		knightsPath.push(fileRankToSquare(currentFile,currentRank));
 		unvisitedSquares = unvisitedSquares.filter(sq => currentFile !== sq.file || currentRank !== sq.rank); // visit (remove current square from unvistedSquares)
 		let neighbors=getNeighbors(currentFile, currentRank, unvisitedSquares, shuffleMoveOrder);
 		if(neighbors.length === 0) {
