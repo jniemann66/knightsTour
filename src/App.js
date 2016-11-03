@@ -27,7 +27,7 @@ class App extends Component {
       boardWidth: 8,
       boardHeight: 8,
       startSquare: 'a1',
-      moveNumber: 1,
+      seqNumber: 1, // range [1 .. n]
       isPlaying: false,
       lastResult: [],
       lastMessage: '',
@@ -62,19 +62,19 @@ class App extends Component {
  
 
   _showLastMove() {
-    this.setState({moveNumber: this.state.lastResult.length});
+    this.setState({seqNumber: this.state.lastResult.length});
   }
 
   _showNextMove() {
-    this.setState({moveNumber: Math.min(this.state.moveNumber+1, this.state.lastResult.length)});
+    this.setState({seqNumber: Math.min(this.state.seqNumber+1, this.state.lastResult.length)});
   }
 
   _showPrevMove() {
-    this.setState({moveNumber: Math.max(1, this.state.moveNumber-1)});
+    this.setState({seqNumber: Math.max(1, this.state.seqNumber-1)});
   }
 
   _showFirstMove() {
-    this.setState({moveNumber: 1});
+    this.setState({seqNumber: 1});
   }
 
  calcKnightsTour() {
@@ -92,7 +92,6 @@ class App extends Component {
     let leastRemainingSquares = this.state.boardWidth * this.state.boardHeight;
     for (let attempt = 1; attempt <= maxAttempts; attempt++){
       let res=knightsTour(boardSizeHoriz, boardSizeVert, i, j, attempt === 1);
-      console.log(res);
       if(res.unvisitedSquareCount < leastRemainingSquares) {
         leastRemainingSquares = res.unvisitedSquareCount;
         finalResult = Object.assign({},res);
@@ -112,7 +111,7 @@ class App extends Component {
 
   render() {
 
-    let seqNumber = this.state.moveNumber;
+    let seqNumber = this.state.seqNumber;
     let tourSquares = this.state.lastResult.slice(0, seqNumber); // sequence of squares visited in tour (as array)
     let positionDescriptor = tourSquares.map(sq => '-@' + sq); // blanked squares at each square of sequence
     positionDescriptor.push('N@' + tourSquares[seqNumber - 1]); // knight on last square of sequence
