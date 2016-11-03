@@ -146,7 +146,8 @@ class App extends Component {
                 <Button bsStyle="primary" className="btn-oldstyle"><Glyphicon glyph="play" /></Button>
                 <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showNextMove.bind(this)}><Glyphicon glyph="step-forward" /></Button>
                 <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showLastMove.bind(this)}><Glyphicon glyph="fast-forward" /></Button>
-              </ButtonGroup> 
+              </ButtonGroup>
+              <div>{seqNumber}</div> 
             </div>
             <div className="col-sm-4">
               <br/>
