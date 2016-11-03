@@ -79,6 +79,12 @@ class App extends Component {
     this.setState({seqNumber: 1});
   }
 
+  _selectSquare(square) {
+    if(square) {
+      this.setState({startSquare: square});
+    }
+  }
+
  calcKnightsTour() {
   const boardSizeHoriz=this.state.boardWidth;
   const boardSizeVert=this.state.boardHeight;
@@ -132,6 +138,7 @@ class App extends Component {
                 files={this.state.boardWidth} 
                 ranks={this.state.boardHeight} 
                 pieces={positionDescriptor}
+                onSelectSquare={this._selectSquare.bind(this)}
               />
               <ButtonGroup bsSize="xsmall">
                 <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showFirstMove.bind(this)}><Glyphicon glyph="fast-backward" /></Button>
