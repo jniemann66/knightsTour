@@ -16,6 +16,7 @@ import { Form } from 'react-bootstrap';
 import Chessdiagram from 'react-chessdiagram';
 import { knightsTour } from './knightsTour.js';
 import { squareToFileRank } from './utility.js';
+import Measure from 'react-measure';
 
 var Highlight = require('react-highlighter');
 
@@ -23,11 +24,12 @@ import './App.css';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       boardWidth: 8,
       boardHeight: 8,
+      diagramDimensions: {width: -1},
       startSquare: 'a1',
       seqNumber: 1, // range [1 .. n]
       isPlaying: false,
@@ -138,23 +140,29 @@ class App extends Component {
         <br/>
         <div className="container">
           <div className="row">
-            <div ref="diagramContainer" className="col-sm-8">
-              <Chessdiagram
-                squareSize={this.refs.diagramContainer ? Math.min(80, 0.8 * this.refs.diagramContainer.clientWidth / this.state.boardWidth) : 45} 
-                files={this.state.boardWidth} 
-                ranks={this.state.boardHeight} 
-                pieces={positionDescriptor}
-                onSelectSquare={this._selectSquare.bind(this)}
-              />
-              <ButtonGroup bsSize="xsmall">
-                <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showFirstMove.bind(this)}><Glyphicon glyph="fast-backward" /></Button>
-                <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showPrevMove.bind(this)}><Glyphicon glyph="step-backward" /></Button>
-                <Button bsStyle="primary" className="btn-oldstyle"><Glyphicon glyph="play" /></Button>
-                <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showNextMove.bind(this)}><Glyphicon glyph="step-forward" /></Button>
-                <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showLastMove.bind(this)}><Glyphicon glyph="fast-forward" /></Button>
-              </ButtonGroup>
-              <div>{seqNumber}</div> 
-            </div>
+
+            <Measure onMeasure = {diagramDimensions => this.setState({diagramDimensions})}>
+              <div ref="diagramContainer" className="col-sm-8">
+                <Chessdiagram
+                  squareSize={this.refs.diagramContainer ? Math.min(80, 0.8 * this.state.diagramDimensions.width / this.state.boardWidth) : 45} 
+                  files={this.state.boardWidth} 
+                  ranks={this.state.boardHeight} 
+                  pieces={positionDescriptor}
+                  onSelectSquare={this._selectSquare.bind(this)}
+                />
+            
+                <ButtonGroup bsSize="xsmall">
+                  <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showFirstMove.bind(this)}><Glyphicon glyph="fast-backward" /></Button>
+                  <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showPrevMove.bind(this)}><Glyphicon glyph="step-backward" /></Button>
+                  <Button bsStyle="primary" className="btn-oldstyle"><Glyphicon glyph="play" /></Button>
+                  <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showNextMove.bind(this)}><Glyphicon glyph="step-forward" /></Button>
+                  <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showLastMove.bind(this)}><Glyphicon glyph="fast-forward" /></Button>
+                </ButtonGroup>
+                <div>{seqNumber}</div> 
+              </div>
+
+            </Measure>
+
             <div className="col-sm-4">
               <br/>
               <Form horizontal={true}>
