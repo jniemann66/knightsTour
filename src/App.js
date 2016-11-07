@@ -43,8 +43,8 @@ class App extends Component {
 
     setTimeout(() => { // send a resize event after 0.5s to force recalculation of diagram square coordinates
       dispatchEvent(new Event('resize'));
-    }, 500);
-    
+    }, 500); // to-do: need better solution !
+
   }
   
   componentWillUnmount () {
