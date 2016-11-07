@@ -39,12 +39,16 @@ class App extends Component {
   }
 
   componentDidMount () {
- //   this.setState({moveTimer: setInterval(this._showNextNove.bind(this,1000))});
-  
+    // this.setState({moveTimer: setInterval(this._showNextNove.bind(this,1000))});
+
+    setTimeout(() => { // send a resize event after 0.5s to force recalculation of diagram square coordinates
+      dispatchEvent(new Event('resize'));
+    }, 500);
+    
   }
   
   componentWillUnmount () {
- //   clearInterval(this.state.moveTimer);
+    // clearInterval(this.state.moveTimer);
   }
 
   getValidationState() {
