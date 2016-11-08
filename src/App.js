@@ -148,7 +148,7 @@ class App extends Component {
             <Measure onMeasure = {diagramDimensions => this.setState({diagramDimensions})}>
               <div ref="diagramContainer" className="col-sm-8">
                 <Chessdiagram
-                  squareSize={this.refs.diagramContainer ? Math.min(80, 0.8 * this.state.diagramDimensions.width / this.state.boardWidth) : 45} 
+                  squareSize={this.refs.diagramContainer ? Math.min(80, 0.7 * this.state.diagramDimensions.width / this.state.boardWidth) : 45} 
                   files={this.state.boardWidth} 
                   ranks={this.state.boardHeight} 
                   pieces={positionDescriptor}
