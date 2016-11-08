@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.6",
     "react-chessdiagram": "^1.1.2",
     "react-dom": "^15.3.2",
     "react-highlighter": "^0.3.3",

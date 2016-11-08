@@ -139,7 +139,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Welcome to the fascinating world of Knight's Tours !</h2>
+          <h2>Knight's Tour</h2>
         </div>
         <br/>
         <div className="container">
@@ -247,6 +247,9 @@ class App extends Component {
               </Row>
             </div>
           </div>
+        </div>
+        <div className="App-header">
+          <h3>&copy; 2016 Judd Niemann</h3>
         </div>
       </div>
     );
