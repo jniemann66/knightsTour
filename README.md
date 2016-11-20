@@ -1,12 +1,12 @@
 # Knights Tours #
 
-Exploring the world of Knights tours on arbitrary board sizes
+Explore the world of Knights tours on arbitrary board sizes
 
 ## Description
 
 This app calculates [Knight's Tours](https://en.wikipedia.org/wiki/Knight%27s_tour) on chess boards of arbitrary size up to 26 x 26 squares.
-After a knight's tour has been calculated, the user can step through the Knight's path, 
-and visited squares are darkened to indicate that they are no longer available to be visited again. 
+After a knight's tour has been calculated, the user can step through the Knight's path. 
+Visited squares are darkened to indicate that they are no longer available to be visited again. 
 
 The starting square can be selected by simply clicking on a square.
 
@@ -36,5 +36,3 @@ Clone this repository and issue an **npm install** command at the root of the fo
 * [ ] Indicate to the user if case is unsolvable (ie no complete tour possible)
 
 * [ ] Solve closed Knight's Tours
-
-
