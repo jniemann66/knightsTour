@@ -12,7 +12,6 @@ import { HelpBlock } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 
-//import Chessdiagram from '../../react-chessdiagram/build/dist.chessdiagram.js';
 import Chessdiagram from 'react-chessdiagram';
 import { knightsTour } from './knightsTour.js';
 import { squareToFileRank } from './utility.js';
@@ -142,7 +141,7 @@ class App extends Component {
           <h2>Knight's Tour</h2>
         </div>
         <br/>
-        <div className="container">
+        <div className="container content">
           <div className="row">
 
             <Measure onMeasure = {diagramDimensions => this.setState({diagramDimensions})}>
@@ -248,9 +247,10 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <div className="App-header">
+        <br/>
+        <footer className="App-footer">
           <h3>&copy; 2016 Judd Niemann</h3>
-        </div>
+        </footer>
       </div>
     );
   }
