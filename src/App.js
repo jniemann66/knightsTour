@@ -137,11 +137,14 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="App-header">
+
+        <header className="App-header">
           <h2>Knight's Tour</h2>
-        </div>
+        </header>
+        
         <br/>
-        <div className="container content">
+
+        <div className="container">
           <div className="row">
 
             <Measure onMeasure = {diagramDimensions => this.setState({diagramDimensions})}>
@@ -247,10 +250,13 @@ class App extends Component {
             </div>
           </div>
         </div>
+
         <br/>
+
         <footer className="App-footer">
-          <h3>&copy; 2016 Judd Niemann</h3>
+          <p>&copy; 2016 Judd Niemann</p>
         </footer>
+      
       </div>
     );
   }
