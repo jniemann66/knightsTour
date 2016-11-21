@@ -52,7 +52,7 @@ class App extends Component {
   }
 
   getValidationState() {
-    let [file,rank] = squareToFileRank(this.state.startSquare);
+    let [file, rank] = squareToFileRank(this.state.startSquare);
 
     if(
       this.state.boardWidth > 26 || 
@@ -100,7 +100,7 @@ class App extends Component {
   if(this.getValidationState()==='error')
     return;
 
-  let [i,j] = squareToFileRank(this.state.startSquare);
+  let [i, j] = squareToFileRank(this.state.startSquare);
   let finalResult;
   if (attemptTheImpossible || (this.state.boardWidth & 1) === 0 || ((i ^ j) & 1) === 0 ) {
     let leastRemainingSquares = this.state.boardWidth * this.state.boardHeight;
