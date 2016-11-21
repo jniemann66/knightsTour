@@ -2,6 +2,8 @@
 
 Explore the world of Knights tours on arbitrary board sizes
 
+![](./screenshot.png)
+
 ## Description
 
 This app calculates [Knight's Tours](https://en.wikipedia.org/wiki/Knight%27s_tour) on chess boards of arbitrary size up to 26 x 26 squares.
@@ -14,8 +16,6 @@ Additionally, the interface is responsive (by virtue of Bootstrap), and should w
 
 ## Live Demo
 [Knight's Tours](http://knightstour.juddn.com)
-
-![](./screenshot.png)
 
 This project in written in React and uses the [react-chessdiagram](https://www.npmjs.com/package/react-chessdiagram "react-chessdiagram") react component.
 
