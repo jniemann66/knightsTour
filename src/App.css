@@ -66,5 +66,12 @@
   border-color: #08c;
 }
 
+.highlight-style {
+  background: greenyellow;
+}
+
+.move-list {
+  font-family: Consolas, Monaco, monospace;
+}
 
 

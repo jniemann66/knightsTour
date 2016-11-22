@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   componentDidMount () {
-    // this.setState({moveTimer: setInterval(this._showNextNove.bind(this,1000))});
+    this.setState({moveTimer: setInterval(this._autoPlay.bind(this,1000))});
 
     setTimeout(() => { // send a resize event after 0.5s to force recalculation of diagram square coordinates
       dispatchEvent(new Event('resize'));
@@ -47,7 +47,7 @@ class App extends Component {
   }
   
   componentWillUnmount () {
-    // clearInterval(this.state.moveTimer);
+    clearInterval(this.state.moveTimer);
   }
 
   getValidationState() {
@@ -66,7 +66,12 @@ class App extends Component {
       return 'success';
     } 
   }
- 
+
+  _autoPlay() {
+    if(this.state.isPlaying) {
+      this._showNextMove();
+    }
+  } 
 
   _showLastMove() {
     this.setState({seqNumber: this.state.lastResult.length});
@@ -157,14 +162,21 @@ class App extends Component {
                   onSelectSquare={this._selectSquare.bind(this)}
                 />
             
-                <ButtonGroup bsSize="xsmall">
-                  <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showFirstMove.bind(this)}><Glyphicon glyph="fast-backward" /></Button>
-                  <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showPrevMove.bind(this)}><Glyphicon glyph="step-backward" /></Button>
-                  <Button bsStyle="primary" className="btn-oldstyle"><Glyphicon glyph="play" /></Button>
-                  <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showNextMove.bind(this)}><Glyphicon glyph="step-forward" /></Button>
-                  <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showLastMove.bind(this)}><Glyphicon glyph="fast-forward" /></Button>
-                </ButtonGroup>
-                <div>{seqNumber}</div> 
+                <div style={{margin: '0 auto'}}>
+                  <ButtonGroup bsSize="xsmall">
+                    <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showFirstMove.bind(this)}><Glyphicon glyph="fast-backward" /></Button>
+                    <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showPrevMove.bind(this)}><Glyphicon glyph="step-backward" /></Button>
+                    <Button bsStyle="primary" className="btn-oldstyle" onClick={()=>{this.setState({isPlaying: !this.state.isPlaying});}}>
+                      <Glyphicon glyph={this.state.isPlaying ? "pause" : "play" }/>
+                    </Button>
+                    <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showNextMove.bind(this)}><Glyphicon glyph="step-forward" /></Button>
+                    <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showLastMove.bind(this)}><Glyphicon glyph="fast-forward" /></Button>
+                  </ButtonGroup>
+                 
+                  <div>Sequence Number: 
+                    <strong>{seqNumber}</strong>
+                  </div> 
+                </div>
               </div>
 
             </Measure>
@@ -241,8 +253,8 @@ class App extends Component {
               <Row>
                 <Col xs={12}> 
                   
-                  <p>
-                    <Highlight search={highlightExp}>{this.state.lastResult.join(' ')}</Highlight>
+                  <p className="move-list">
+                    <Highlight search={highlightExp} matchStyle={{background: '#ADFF2F'}}>{this.state.lastResult.join(' ')}</Highlight>
                   </p>
                   <p>{this.state.lastMessage}</p>
                 </Col>
