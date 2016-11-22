@@ -152,7 +152,7 @@ class App extends Component {
         <div className="container">
           <div className="row">
 
-            <Measure onMeasure = {diagramDimensions => this.setState({diagramDimensions})}>
+            <Measure onMeasure={diagramDimensions => this.setState({diagramDimensions})}>
               <div ref="diagramContainer" className="col-sm-8">
                 <Chessdiagram
                   squareSize={this.refs.diagramContainer ? Math.min(80, 0.7 * this.state.diagramDimensions.width / this.state.boardWidth) : 45} 
