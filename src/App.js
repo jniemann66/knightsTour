@@ -154,7 +154,7 @@ class App extends Component {
       <div className="App">
 
         <header className="App-header">
-          <h2>Knight's Tour</h2>
+          <h2>Knight&rsquo;s Tour</h2>
         </header>
         
         <br/>
