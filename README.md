@@ -27,7 +27,11 @@ Clone this repository and issue an **npm install** command at the root of the fo
 
 ## To-do
 
-* [ ] Implement the (auto) play button (ie automatically step through the sequence when play button is presesed)
+* [X] ~~*Implement the (auto) play button (ie automatically step through the sequence when play button is presesed)*~~
+
+* [ ] Adjustable speed for auto-play (it's fast, which is good for large boards, but a bit too zippy for small ones)
+
+* [ ] Wait indication when calculating
 
 * [ ] Introduce other algorithms (besides Warnsdorf's rule)
 
@@ -36,3 +40,11 @@ Clone this repository and issue an **npm install** command at the root of the fo
 * [ ] Indicate to the user if case is unsolvable (ie no complete tour possible)
 
 * [ ] Solve closed Knight's Tours
+
+## credit
+
+Thanks to the authors of these react components, which are used in the app:
+
+[react-measure](https://www.npmjs.com/package/react-measure)
+
+[react-highlight](https://www.npmjs.com/package/react-highlight)
