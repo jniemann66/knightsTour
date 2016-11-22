@@ -245,7 +245,11 @@ class App extends Component {
                   </Col>
                  
                   <Col xs={6}>
-                     <Button bsStyle="primary" bsSize="xsmall" className="btn-oldstyle" onClick={evt => this.calcKnightsTour()}>Calculate!</Button>
+                     <Button bsStyle="primary" bsSize="xsmall" className="btn-oldstyle" onClick={
+                       (evt)  => {
+                         this.calcKnightsTour();
+                       }
+                      }>Calculate!</Button>
                   </Col>
                 </FormGroup>
               </Form>
