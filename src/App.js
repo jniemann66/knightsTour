@@ -43,7 +43,6 @@ class App extends Component {
     setTimeout(() => { // send a resize event after 0.5s to force recalculation of diagram square coordinates
       dispatchEvent(new Event('resize'));
     }, 500); // to-do: need better solution !
-
   }
   
   componentWillUnmount () {
@@ -73,6 +72,14 @@ class App extends Component {
     }
   } 
 
+  _onClickCalculate() {
+    this.setState({lastMessage: 'calculating ...'});
+    
+    this.calcKnightsTour().catch(() => {
+      this.setState({lastMessage: 'error - unable to calculate!'});
+    });        
+  }
+
   _showLastMove() {
     this.setState({seqNumber: this.state.lastResult.length});
   }
@@ -96,35 +103,38 @@ class App extends Component {
   }
 
  calcKnightsTour() {
-  const boardSizeHoriz=this.state.boardWidth;
-  const boardSizeVert=this.state.boardHeight;
-  const maxAttempts = 100;
-  const attemptTheImpossible = true; // if true, attempt to complete tour starting from white square on 'odd' board (not possible to complete)
 
-  if(this.getValidationState()==='error')
-    return;
+  return new Promise((resolve, reject) => {
+    const boardSizeHoriz=this.state.boardWidth;
+    const boardSizeVert=this.state.boardHeight;
+    const maxAttempts = 100;
 
-  let [i, j] = squareToFileRank(this.state.startSquare);
-  let finalResult;
-  if (attemptTheImpossible || (this.state.boardWidth & 1) === 0 || ((i ^ j) & 1) === 0 ) {
-    let leastRemainingSquares = this.state.boardWidth * this.state.boardHeight;
-    for (let attempt = 1; attempt <= maxAttempts; attempt++){
-      let res=knightsTour(boardSizeHoriz, boardSizeVert, i, j, attempt === 1);
-      if(res.unvisitedSquareCount < leastRemainingSquares) {
-        leastRemainingSquares = res.unvisitedSquareCount;
-        finalResult = Object.assign({},res);
+    if(this.getValidationState()==='error') {
+      reject();
+    } else {
+
+      let [i, j] = squareToFileRank(this.state.startSquare);
+      let finalResult;
+
+      let leastRemainingSquares = this.state.boardWidth * this.state.boardHeight;
+      for (let attempt = 1; attempt <= maxAttempts; attempt++){
+        let res=knightsTour(boardSizeHoriz, boardSizeVert, i, j, attempt === 1);
+        if(res.unvisitedSquareCount < leastRemainingSquares) {
+          leastRemainingSquares = res.unvisitedSquareCount;
+          finalResult = Object.assign({},res);
+        }
+        if(res.success) {
+          break;
+        }
       }
-      if(res.success) {
-        break;
-      }
+
+      this.setState({
+        lastResult: finalResult.knightsPath, 
+        lastMessage: finalResult.success ? 'complete' : 'incomplete: ' + finalResult.unvisitedSquareCount + ' squares'
+      }, resolve());
+
     }
-  }
-
-  this.setState({
-    lastResult: finalResult.knightsPath, 
-    lastMessage: finalResult.success ? 'complete' : 'incomplete: ' + finalResult.unvisitedSquareCount + ' squares'
-  })
-
+  }); 
 }
 
   render() {
@@ -245,11 +255,9 @@ class App extends Component {
                   </Col>
                  
                   <Col xs={6}>
-                     <Button bsStyle="primary" bsSize="xsmall" className="btn-oldstyle" onClick={
-                       (evt)  => {
-                         this.calcKnightsTour();
-                       }
-                      }>Calculate!</Button>
+                    <Button bsStyle="primary" bsSize="xsmall" className="btn-oldstyle" onClick={this._onClickCalculate.bind(this)}>
+                      Calculate!
+                    </Button>
                   </Col>
                 </FormGroup>
               </Form>
