@@ -2,6 +2,9 @@
 
 Explore the world of Knights tours on arbitrary board sizes
 
+## Live Demo
+[Knight's Tours](http://knightstour.juddn.com)
+
 ![](./screenshot.png)
 
 ## Description
@@ -13,9 +16,6 @@ Visited squares are darkened to indicate that they are no longer available to be
 The starting square can be selected by simply clicking on a square.
 
 Additionally, the interface is responsive (by virtue of Bootstrap), and should work on small screens as well as large. 
-
-## Live Demo
-[Knight's Tours](http://knightstour.juddn.com)
 
 This project in written in React and uses the [react-chessdiagram](https://www.npmjs.com/package/react-chessdiagram "react-chessdiagram") react component.
 
