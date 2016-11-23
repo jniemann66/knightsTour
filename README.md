@@ -48,3 +48,7 @@ Thanks to the authors of these react components, which are used in the app:
 [react-measure](https://www.npmjs.com/package/react-measure)
 
 [react-highlight](https://www.npmjs.com/package/react-highlight)
+
+## Further reading and resources
+
+[http://gaebler.us/share/Knight_tour.html](http://gaebler.us/share/Knight_tour.html)
