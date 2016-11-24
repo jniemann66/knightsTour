@@ -52,3 +52,13 @@ Thanks to the authors of these react components, which are used in the app:
 ## Further reading and resources
 
 [http://gaebler.us/share/Knight_tour.html](http://gaebler.us/share/Knight_tour.html)
+
+[http://www.tri.org.au/knightframe.html](http://www.tri.org.au/knightframe.html)
+
+[http://www.sciencedirect.com/science/article/pii/S0166218X04003488](http://www.sciencedirect.com/science/article/pii/S0166218X04003488)]
+
+[http://www.sciencedirect.com/science/article/pii/S0166218X96000108](http://www.sciencedirect.com/science/article/pii/S0166218X96000108)
+
+
+
+
