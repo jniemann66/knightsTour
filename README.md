@@ -55,10 +55,10 @@ Thanks to the authors of these react components, which are used in the app:
 
 [http://www.tri.org.au/knightframe.html](http://www.tri.org.au/knightframe.html)
 
-[http://www.sciencedirect.com/science/article/pii/S0166218X04003488](http://www.sciencedirect.com/science/article/pii/S0166218X04003488)]
+[http://www.sciencedirect.com/science/article/pii/S0166218X04003488](http://www.sciencedirect.com/science/article/pii/S0166218X04003488)
 
 [http://www.sciencedirect.com/science/article/pii/S0166218X96000108](http://www.sciencedirect.com/science/article/pii/S0166218X96000108)
 
-
+[http://algorithms.tutorialhorizon.com/backtracking-knights-tour-problem/](http://algorithms.tutorialhorizon.com/backtracking-knights-tour-problem/)
 
 
