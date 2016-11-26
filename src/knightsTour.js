@@ -1,7 +1,7 @@
 import { fileRankToSquare } from './utility.js';
 
 // knightsTour(): attempt a single Knight's tour, using Warnsdorff's rule 
-// M = width of board, N = height of board in squares
+// M = width (number of ranks), N = height (number of files)
 // startFile and StartRank represent starting square, (0 to M-1, 0 to N-1 respectively)
 // shuffleMoveOrder:  if true, randomize the order of Knight's moves searched
 
