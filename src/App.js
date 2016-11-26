@@ -12,13 +12,14 @@ import { HelpBlock } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 
+// Other components:
 import Chessdiagram from 'react-chessdiagram';
-import { knightsTour } from './knightsTour.js';
-import { squareToFileRank } from './utility.js';
 import Measure from 'react-measure';
-
 var Highlight = require('react-highlighter');
 
+// Source files:
+import { knightsTour } from './knightsTour.js';
+import { squareToFileRank } from './utility.js';
 import './App.css';
 
 class App extends Component {
