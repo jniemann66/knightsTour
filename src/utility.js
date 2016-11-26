@@ -15,5 +15,3 @@ export function squareToFileRank (square) {
 export function fileRankToSquare (file, rank) {
 	return String.fromCharCode(97 + file) + (1+rank);
 }
-
-// export { squareToFileRank, fileRankToSquare };
