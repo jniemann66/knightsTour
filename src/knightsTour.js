@@ -77,7 +77,7 @@ function getNeighbors(file, rank, unvisitedSquares, shuffleMoveOrder = false) {
 	}
 
 	let neighbors = [];
-	knightMoves.forEach((move)=> {
+	knightMoves.forEach(move => {
 		let newSquare = {file: file + move[0], rank: rank + move[1]};
 		if(unvisitedSquares.filter(unvisited => newSquare.file === unvisited.file && newSquare.rank === unvisited.rank).length) {
 			neighbors.push(newSquare);
