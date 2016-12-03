@@ -24,7 +24,7 @@ function knightsTour(M, N, startFile, startRank, shuffleMoveOrder = false) {
 	    /* eslint no-loop-func: off */ // (stfu, eslint !!)
 		knightsPath.push(fileRankToSquare(currentFile,currentRank));
 		unvisitedSquares = unvisitedSquares.filter(sq => currentFile !== sq.file || currentRank !== sq.rank); // visit (remove current square from unvistedSquares)
-		let neighbors=getNeighbors(currentFile, currentRank, unvisitedSquares, shuffleMoveOrder);
+		let neighbors = getNeighbors(currentFile, currentRank, unvisitedSquares, shuffleMoveOrder);
 		if(neighbors.length === 0) {
 			break;
 		}
