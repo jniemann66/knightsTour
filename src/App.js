@@ -86,12 +86,9 @@ class App extends Component {
   }
 
   _showNextMove() {
-    this.setState({seqNumber: Math.min(this.state.seqNumber+1, this.state.lastResult.length)},
-      () => {
-        if(this.state.seqNumber >= this.state.lastResult.length){
-          this.setState({isPlaying: false, /* seqNumber: 0 */});
-        }
-      }
+    this.setState((this.state.seqNumber >= this.state.lastResult.length)?
+      {isPlaying: false} :
+      {seqNumber: this.state.seqNumber + 1}
     );
   }
 
