@@ -45,7 +45,7 @@ class App extends Component {
       dispatchEvent(new Event('resize'));
     }, 500); // to-do: need better solution !
   }
-  
+
   componentWillUnmount () {
     clearInterval(this.state.moveTimer);
   }
@@ -54,7 +54,7 @@ class App extends Component {
     let [file, rank] = squareToFileRank(this.state.startSquare);
 
     if(
-      this.state.boardWidth > 26 || 
+      this.state.boardWidth > 26 ||
       this.state.boardHeight > 26 ||
       this.state.boardWidth < 1 ||
       this.state.boardHeight < 1 ||
@@ -62,23 +62,23 @@ class App extends Component {
       rank > this.state.boardHeight - 1
     ) {
       return 'error';
-    } else { 
+    } else {
       return 'success';
-    } 
+    }
   }
 
   _autoPlay() {
     if(this.state.isPlaying) {
       this._showNextMove();
     }
-  } 
+  }
 
   _onClickCalculate() {
     this.setState({lastMessage: 'calculating ...'});
-    
+
     this.calcKnightsTour().catch(() => {
       this.setState({lastMessage: 'error - unable to calculate!'});
-    });        
+    });
   }
 
   _showLastMove() {
@@ -133,12 +133,12 @@ class App extends Component {
       }
 
       this.setState({
-        lastResult: finalResult.knightsPath, 
+        lastResult: finalResult.knightsPath,
         lastMessage: finalResult.success ? 'complete' : 'incomplete: ' + finalResult.unvisitedSquareCount + ' squares'
       }, resolve());
 
     }
-  }); 
+  });
 }
 
   render() {
@@ -148,11 +148,11 @@ class App extends Component {
     let lastSquareName = tourSquares[seqNumber-1];
     let positionDescriptor = tourSquares.map(sq => '-@' + sq); // blanked squares at each square of sequence
     positionDescriptor.push('N@' + lastSquareName); // knight on last square of sequence
-    
+
     // generate regex for highlighting current square in move sequence (eg. need to discriminate between 'a1' and 'a11'):
-    let highlightExp = lastSquareName ? 
+    let highlightExp = lastSquareName ?
         RegExp(lastSquareName + '\\b', 'i') // matches lastSquareName followed by word break (ie space or end-of-line)
-        : ''; 
+        : '';
 
     return (
       <div className="App">
@@ -160,7 +160,7 @@ class App extends Component {
         <header className="App-header">
           <h2>Knight&rsquo;s Tour</h2>
         </header>
-        
+
         <br/>
 
         <div className="container">
@@ -169,13 +169,13 @@ class App extends Component {
             <Measure onMeasure={diagramDimensions => this.setState({diagramDimensions})}>
               <div ref="diagramContainer" className="col-sm-8">
                 <Chessdiagram
-                  squareSize={this.refs.diagramContainer ? Math.min(80, 0.7 * this.state.diagramDimensions.width / this.state.boardWidth) : 45} 
-                  files={this.state.boardWidth} 
-                  ranks={this.state.boardHeight} 
+                  squareSize={this.refs.diagramContainer ? Math.min(80, 0.7 * this.state.diagramDimensions.width / this.state.boardWidth) : 45}
+                  files={this.state.boardWidth}
+                  ranks={this.state.boardHeight}
                   pieces={positionDescriptor}
                   onSelectSquare={this._selectSquare.bind(this)}
                 />
-            
+
                 <div style={{margin: '0 auto'}}>
                   <ButtonGroup bsSize="xsmall">
                     <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showFirstMove.bind(this)}><Glyphicon glyph="fast-backward" /></Button>
@@ -186,10 +186,10 @@ class App extends Component {
                     <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showNextMove.bind(this)}><Glyphicon glyph="step-forward" /></Button>
                     <Button bsStyle="primary" className="btn-oldstyle" onClick={this._showLastMove.bind(this)}><Glyphicon glyph="fast-forward" /></Button>
                   </ButtonGroup>
-                 
-                  <div>Sequence Number: 
+
+                  <div>Sequence Number:
                     <strong>{seqNumber}</strong>
-                  </div> 
+                  </div>
                 </div>
               </div>
 
@@ -211,14 +211,14 @@ class App extends Component {
                     value={this.state.boardWidth}
                     placeholder="Enter text"
                     onChange={evt => this.setState({
-                      boardWidth: Math.min(Math.max(1,evt.target.value),26), 
+                      boardWidth: Math.min(Math.max(1,evt.target.value),26),
                       lastResult: [],
                       lastMessage: '',
                       seqNumber: 1
                     })}
                   />
                   </Col>
-            
+
                   <Col xs={3}>
                   <ControlLabel>Board Height</ControlLabel>
                     </Col>
@@ -245,7 +245,7 @@ class App extends Component {
                   bsSize="small"
                   controlId="formParameters"
                   validationState={this.getValidationState()}
-                >  
+                >
                   <Col xs={3}>
                   <ControlLabel>Start square</ControlLabel>
                   </Col>
@@ -257,7 +257,7 @@ class App extends Component {
                     onChange={evt => this.setState({startSquare: evt.target.value})}
                   />
                   </Col>
-                 
+
                   <Col xs={6}>
                     <Button bsStyle="primary" bsSize="xsmall" className="btn-oldstyle" onClick={this._onClickCalculate.bind(this)}>
                       Calculate!
@@ -267,8 +267,8 @@ class App extends Component {
               </Form>
 
               <Row>
-                <Col xs={12}> 
-                  
+                <Col xs={12}>
+
                   <p className="move-list">
                     <Highlight search={highlightExp} matchStyle={{background: '#ADFF2F'}}>{this.state.lastResult.join(' ')}</Highlight>
                   </p>
@@ -284,7 +284,7 @@ class App extends Component {
         <footer className="App-footer">
           <p>&copy; 2016 Judd Niemann</p>
         </footer>
-      
+
       </div>
     );
   }

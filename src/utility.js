@@ -5,13 +5,13 @@
 // (I suppose we could implement a system like Excel's column numbering, going to 'aa' after 'z' ...)
 
 export function squareToFileRank (square) {
-	let alphaNumSplit = square.match(/(\d+|[^\d]+)/g);
-	let file = alphaNumSplit[0].toLowerCase().charCodeAt(0)-97;
-	let rank = Number(alphaNumSplit[1])-1;
-	return([file, rank]);
+  let alphaNumSplit = square.match(/(\d+|[^\d]+)/g);
+  let file = alphaNumSplit[0].toLowerCase().charCodeAt(0)-97;
+  let rank = Number(alphaNumSplit[1])-1;
+  return([file, rank]);
 }
 
 // fileRankToSquare() : convert file, rank to a square name
 export function fileRankToSquare (file, rank) {
-	return String.fromCharCode(97 + file) + (1+rank);
+  return String.fromCharCode(97 + file) + (1 + rank);
 }
