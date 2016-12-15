@@ -122,7 +122,7 @@ class App extends Component {
 
       let leastRemainingSquares = this.state.boardWidth * this.state.boardHeight;
       for (let attempt = 1; attempt <= maxAttempts; attempt++){
-        let res=knightsTour(boardSizeHoriz, boardSizeVert, i, j, attempt === 1);
+        let res=knightsTour(boardSizeHoriz, boardSizeVert, i, j, attempt !== 1 /* shuffle move order on repeat attempts */);
         if(res.unvisitedSquareCount < leastRemainingSquares) {
           leastRemainingSquares = res.unvisitedSquareCount;
           finalResult = Object.assign({},res);
