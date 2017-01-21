@@ -1,6 +1,6 @@
 # Knights Tours #
 
-Explore the world of Knights tours on arbitrary board sizes
+A tool for exploring the world of Knights tours on arbitrary board sizes
 
 ## Live Demo
 [Knight's Tours](http://knightstour.juddn.com)
