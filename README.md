@@ -10,12 +10,12 @@ A tool for exploring the world of Knights tours on arbitrary board sizes
 ## Description
 
 This app calculates [Knight's Tours](https://en.wikipedia.org/wiki/Knight%27s_tour) on chess boards of arbitrary size up to 26 x 26 squares.
-After a knight's tour has been calculated, the user can step through the Knight's path. 
-Visited squares are darkened to indicate that they are no longer available to be visited again. 
+After a knight's tour has been calculated, the user can step through the Knight's path.
+Visited squares are darkened to indicate that they are no longer available to be visited again.
 
 The starting square can be selected by simply clicking on a square.
 
-Additionally, the interface is responsive (by virtue of Bootstrap), and should work on small screens as well as large. 
+Additionally, the interface is responsive (by virtue of Bootstrap), and should work on small screens as well as large.
 
 This project in written in React and uses the [react-chessdiagram](https://www.npmjs.com/package/react-chessdiagram "react-chessdiagram") react component.
 
