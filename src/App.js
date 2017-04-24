@@ -147,7 +147,9 @@ class App extends Component {
     let tourSquares = this.state.lastResult.slice(0, seqNumber); // sequence of squares visited in tour (as array)
     let lastSquareName = tourSquares[seqNumber-1];
     let positionDescriptor = tourSquares.map(sq => '-@' + sq); // blanked squares at each square of sequence
-    positionDescriptor.push('N@' + lastSquareName); // knight on last square of sequence
+    
+    if(lastSquareName)
+      positionDescriptor.push('N@' + lastSquareName); // knight on last square of sequence
 
     // generate regex for highlighting current square in move sequence (eg. need to discriminate between 'a1' and 'a11'):
     let highlightExp = lastSquareName ?
